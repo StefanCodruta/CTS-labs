@@ -1,0 +1,10 @@
+~~~~~~~~~Observatii pe cod~~~~~~~~~~~~
+
+1. Conventii de nume 
+- numele clasei nu este ok -> nu sugereaza scopul clasei 
+- numele functiei este prea general -> ar trebui sa fie sugestiv ceea ce face
+- argumentele nu sunt ok denumite
+- var de rezultat tot generica, necesita redenumire 
+- valoare tot generic -"-
+- (poate fi si numele pachetului o problema)
+-  
