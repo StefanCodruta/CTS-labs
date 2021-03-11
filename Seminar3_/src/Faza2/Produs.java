@@ -48,12 +48,12 @@ public class Produs{
 	    case STOC_LIMITAT:
 	    	 discount=TipProdus.STOC_LIMITAT.getDiscount();
 	    	 valoarediscountTipProdus= getPretCuDiscount(pretInitial,discount);
-		      pretFinal = valoarediscountTipProdus * (1-Discount_fidelitate)
+		      pretFinal = valoarediscountTipProdus * (1-Discount_fidelitate);
 	    	break;
 	    case VECHI:
 	    	 discount=TipProdus.VECHI.getDiscount();
 	    	 valoarediscountTipProdus= getPretCuDiscount(pretInitial,discount);
-		      pretFinal =  valoarediscountTipProdus * (1-Discount_fidelitate)
+		      pretFinal =  valoarediscountTipProdus * (1-Discount_fidelitate);
 		      break;
 		 default:
 			 throw new UnsupportedOperationException("un simbol al enumerarii nu a fost procesat");
