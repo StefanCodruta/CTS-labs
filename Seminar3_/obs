@@ -1,10 +1,11 @@
 ~~~~~~~~~Observatii pe cod~~~~~~~~~~~~
 
-1. Conventii de nume 
+1. Conventii de nume + valori harcodate("magic numbers")
 - numele clasei nu este ok -> nu sugereaza scopul clasei 
 - numele functiei este prea general -> ar trebui sa fie sugestiv ceea ce face
 - argumentele nu sunt ok denumite
 - var de rezultat tot generica, necesita redenumire 
 - valoare tot generic -"-
 - (poate fi si numele pachetului o problema)
--  
+- datele de intrare nu sunt validate
+-  valorile nu ar trebui harcodate -> eliminare valori predefinite din functie
