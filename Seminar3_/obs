@@ -9,3 +9,8 @@
 - (poate fi si numele pachetului o problema)
 - datele de intrare nu sunt validate
 -  valorile nu ar trebui harcodate -> eliminare valori predefinite din functie
+
+2. Single Responsability si KISS pt functii
+- metoda calculeaza prea mule valori intermediare
+- se repeta o parte din prelucrari 
+- 
