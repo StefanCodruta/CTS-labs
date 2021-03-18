@@ -7,6 +7,7 @@ public class ServiciuValidari implements InterfataValidare{
 
 	
 	//evitare boolean -> genereaza uitari de verificare -> face puf
+	
 	@Override
 	public void validare_pret(float pretInitial) throws PretInvalid {
 		{
