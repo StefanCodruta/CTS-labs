@@ -1,6 +1,7 @@
 ~~~~~~~~~Observatii pe cod~~~~~~~~~~~~
 
 1. Conventii de nume + valori harcodate("magic numbers")
+
 - numele clasei nu este ok -> nu sugereaza scopul clasei 
 - numele functiei este prea general -> ar trebui sa fie sugestiv ceea ce face
 - argumentele nu sunt ok denumite
@@ -11,6 +12,11 @@
 -  valorile nu ar trebui harcodate -> eliminare valori predefinite din functie
 
 2. Single Responsability si KISS pt functii
+
 - metoda calculeaza prea mule valori intermediare
 - se repeta o parte din prelucrari 
-- 
+-
+
+3. SOLID 
+- eliminare switch prin tratarea primului caz in mod generic 
+- eliminare dependente legate de validarea datelor si prelucrarea discount-ului 
