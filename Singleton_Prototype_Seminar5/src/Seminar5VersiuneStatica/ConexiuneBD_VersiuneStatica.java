@@ -6,7 +6,7 @@ public class ConexiuneBD_VersiuneStatica {
 	String ip;
 	String denumire;
 
-	public static final ConexiuneBD conexiune;
+	public static final ConexiuneBD_VersiuneStatica conexiune;
 
 	private ConexiuneBD_VersiuneStatica(String ip, String denumire) {
 		
@@ -21,7 +21,7 @@ public class ConexiuneBD_VersiuneStatica {
 		String ip= "127.0.0.1";
 		String denumire="bdtest";
 		//public il poate apela oricine -- nu intra la Singleton
-		conexiune = new ConexiuneBD(ip, denumire);
+		conexiune = new ConexiuneBD_VersiuneStatica(ip, denumire);
 		
 	}
 }

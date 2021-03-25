@@ -1,14 +1,14 @@
 package Seminar5VersiuneStatica;
 
-import Seminar5.ConexiuneBD;
+import Seminar5VersiuneStatica.ConexiuneBD_VersiuneStatica;
 
 public class TestSingletonStatic {
 
 	public static void main(String[] args) {
 		
 		
-		ConexiuneBD conexiune1 = ConexiuneBD.conexiune;
-		ConexiuneBD conexiune2 = ConexiuneBD.conexiune;
+		ConexiuneBD_VersiuneStatica conexiune1 =  ConexiuneBD_VersiuneStatica.conexiune;
+		ConexiuneBD_VersiuneStatica conexiune2 =  ConexiuneBD_VersiuneStatica.conexiune;
 		
 		if(conexiune1 == conexiune2) {
 			System.out.println("conexiunile sunt identice");
