@@ -29,6 +29,11 @@ public abstract class DecoratorErouAbstract extends SuperErou{
 		this.erou.seVindeca(puncte);
 		
 	}
+
+	@Override
+	public int getPuncteViata() {
+		return this.erou.getPuncteViata();
+	}
 	
 	
 

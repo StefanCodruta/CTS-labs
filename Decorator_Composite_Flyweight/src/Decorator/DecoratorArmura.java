@@ -16,6 +16,12 @@ public class DecoratorArmura extends DecoratorErouAbstract{
 			this.erou.esteLovit(punctePierdute);
 		}
 	}
+
+	@Override
+	public int getPuncteViata() {
+	
+		return this.erou.puncteViata;
+	}
 	
 	
 
