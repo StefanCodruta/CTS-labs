@@ -7,5 +7,6 @@ public class StrategieZiuaCopilului implements StrategieMarketing {
 		if( jucator.getClasaJucator()>5) {
 			jucator.clasaJucator *= 2;
 		}
+		System.out.println("s a aplicat bonusul de ziua copilului !");
 	}
 }
