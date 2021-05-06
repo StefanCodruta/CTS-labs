@@ -13,6 +13,7 @@ public class TestStrategie {
 		jucator.acordaPuncteBonus();
 		
 		
+		
 	}
 
 }
