@@ -10,7 +10,7 @@ public class ModulFiltruRomana extends ModulProcesareMesaj{
 		boolean esteValid = true;
 		for(String cuvant: dictionar) {
 			if(mesaj.text.toLowerCase().contains(cuvant)) {
-				esteValid=true;
+				esteValid=false;
 				break;
 			}
 		}
