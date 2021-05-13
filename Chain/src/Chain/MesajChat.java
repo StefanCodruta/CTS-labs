@@ -1,10 +1,12 @@
 package Chain;
 
-public class MesajChat {
+//clasa utilitare ... nu este in diagrama 
 
-	String text;
-	int prioritate;
-	String destinatie;
+	public class MesajChat {
+
+		String text;
+		int prioritate;
+		String destinatie;
 	
 	public MesajChat(String text, int prioritate, String destinatie) {
 		super();
