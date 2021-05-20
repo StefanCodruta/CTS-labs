@@ -14,7 +14,7 @@ public class TestMemento {
 		
 		System.out.println("puncte viata"+superErou.puncteViata);
 		
-		superErou.incarcaSalvare(istoric.getUltimaSalvare());
+		superErou.incarcaSalvare(istoric.getUltimaSlavare());
 		System.out.println("puncte viata" +superErou.puncteViata);
 	}
 
