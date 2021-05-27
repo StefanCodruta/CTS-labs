@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.graalvm.compiler.core.aarch64.AArch64AddressLoweringByUse;
+import org.graalvm.compiler.hotspot.aarch64.AArch64HotSpotForeignCallsProvider;
+import org.graalvm.compiler.lir.aarch64.AArch64BreakpointOp;
 import org.graalvm.compiler.nodes.java.AbstractNewArrayNode;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -13,6 +16,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import Testare_modele.Student;
+import Testare_modele.Exceptii.ExceptieNota;
 import Testare_modele.Exceptii.ExceptieNume;
 import Testare_modele.Exceptii.ExceptieVarsta;
 
@@ -98,5 +102,48 @@ public class TestStudent {
 		String numeNou="eu";
 		student.setNume(numeNou);
 	}
-
+	
+	@Test
+	public void testeGetNotaMinimaSortatreNote() throws ExceptieNota {
+		int notaMinima=4;
+		ArrayList<Integer> noteArrayList=new ArrayList<>();
+		for(int i=0; i<5; i++) {
+			note.add(i+notaMinima);
+		}
+		student.setNote(note);
+		
+		int notaMinimaCalculata=student.getNotaMinima();
+		assertEquals("test cu valori sortate crescator", notaMinima,notaMinimaCalculata);
+	}
+ 
+	@Test
+	public void testGetNotaMinimaCardinalitateZero() throws ExceptieNota {
+		ArrayList<Integer> note=new ArrayList<>();
+		student.setNote(note);
+		
+		int notaMinima=0;
+		int notaMinimaCalculata=student.getNotaMinima();
+		assertEquals("test fara note",notaMinima,notaMinimaCalculata);
+		
+	}
+	@Test
+	public void testGetNotaMinimaCardinalitateUnu() throws ExceptieNota {
+		ArrayList<Integer> note=new ArrayList<>();
+		note.add(Student.MAX_NOTA);
+		student.setNote(note);
+		
+		int notaMinima=Student.MAX_NOTA;
+		int notaMinimaCalculata=student.getNotaMinima();
+		assertEquals("test cu o singura nota",notaMinima,notaMinimaCalculata);
+		
+	}
+	
+	@Test
+	public void testGetNotaMinimaReferintaNotaNull() throws ExceptieNota {
+		student.setNote(null);
+		int notaMinima=0;
+		int notaMinimaCalculata=student.getNotaMinima();
+		
+		assertEquals("test referinta null pt note", notaMinima,notaMinimaCalculata);
+	}
 }
