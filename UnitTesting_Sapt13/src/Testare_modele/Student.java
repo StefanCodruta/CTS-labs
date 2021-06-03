@@ -1,9 +1,6 @@
 package Testare_modele;
 import java.util.ArrayList;
 
-import org.graalvm.compiler.core.aarch64.AArch64ArithmeticLIRGenerator;
-import org.graalvm.compiler.nodes.java.AbstractNewArrayNode;
-
 import Testare_modele.Exceptii.ExceptieNota;
 import Testare_modele.Exceptii.ExceptieNume;
 import Testare_modele.Exceptii.ExceptieVarsta;
@@ -82,7 +79,11 @@ public class Student {
 	}
 
     public int getNotaMinima() {
-        int min = 0;
+    	if(this.note == null
+    			||this.note.size()==0) {
+    		return 0;
+    	}
+        int min = this.note.get(0);
         for(int nota : this.note) {
 			if(min > nota) {
                 min = nota;
