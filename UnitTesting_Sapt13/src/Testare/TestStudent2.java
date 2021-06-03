@@ -3,6 +3,8 @@ package Testare;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -11,6 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import Testare_modele.Student;
+import Testare_modele.Exceptii.ExceptieNota;
 import Testare_modele.Exceptii.ExceptieVarsta;
 
 public class TestStudent2 {
@@ -76,5 +79,18 @@ public class TestStudent2 {
 		assertEquals("test pt varsta maxima",varstaNoua,varstaStudent);
 	}
 	
+	@Test
+	public void testeSetNoteReferenceShallowCopy() throws ExceptieNota{
+		int noteStudent[]=new int[] {9,9,10};
+		ArrayList<Integer> refNote = new ArrayList<>(Arrays.asList(9, 9, 10)) ;
+		student.setNote(refNote);
+		
+		refNote.set(0, 5);
+		int noteExistente[] =new int[student.getNrNote()];
+		for(int i=0;i<student.getNrNote();i++) {
+			noteExistente[i]=student.getNota(i);
+		}
+		assertArrayEquals("test shallow copy pe setNote", noteStudent, noteExistente);
+	}
 	
 }
