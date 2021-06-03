@@ -15,11 +15,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import Testare_modele.Student;
 import Testare_modele.Exceptii.ExceptieNota;
 import Testare_modele.Exceptii.ExceptieNume;
 import Testare_modele.Exceptii.ExceptieVarsta;
+import TesteCategorii.TestImportant;
+import TesteCategorii.TestPerformanta;
 
 public class TestStudent {
 
@@ -104,6 +107,7 @@ public class TestStudent {
 		student.setNume(numeNou);
 	}
 	
+	@Category({TestPerformanta.class, TestImportant.class})
 	@Test
 	public void testeGetNotaMinimaSortatreNote() throws ExceptieNota {
 		int notaMinima=4;
@@ -118,6 +122,7 @@ public class TestStudent {
 	}
  
 	@Test
+	@Category( TestImportant.class)
 	public void testGetNotaMinimaCardinalitateZero() throws ExceptieNota {
 		ArrayList<Integer> note=new ArrayList<>();
 		student.setNote(note);

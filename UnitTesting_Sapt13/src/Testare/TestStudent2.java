@@ -4,17 +4,23 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
+import org.graalvm.compiler.hotspot.aarch64.AArch64HotSpotForeignCallsProvider;
+import org.graalvm.compiler.lir.aarch64.AArch64AtomicMove.AtomicReadAndAddLSEOp;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import Testare_modele.Student;
 import Testare_modele.Exceptii.ExceptieNota;
 import Testare_modele.Exceptii.ExceptieVarsta;
+import TesteCategorii.TestImportant;
 
 public class TestStudent2 {
 
@@ -24,6 +30,7 @@ public class TestStudent2 {
 	static String numeInitial;
 	static int varsta;
 	static int nrNoteInitiale;
+	static ArrayList<Integer> noteRandom=new ArrayList<>();
 	
 	@BeforeClass
 	//se executa o singura data
@@ -34,6 +41,14 @@ public class TestStudent2 {
 	   for(int i=0;i<nrNoteInitiale;i++) {
 		   noteInitiale.add(Student.MAX_NOTA-i);
 	   }
+	   
+	   noteRandom=new ArrayList<>();
+		int nrNote=(int) 1e6;
+		Random random=new Random();
+		for(int i =0;i<nrNote;i++) {
+			noteRandom.add(random.nextInt(Student.MAX_NOTA)+1);
+			
+		}
 	}
 
 	@AfterClass
@@ -92,5 +107,81 @@ public class TestStudent2 {
 		}
 		assertArrayEquals("test shallow copy pe setNote", noteStudent, noteExistente);
 	}
+	//Junit3
+//	@Test
+//	public void testGetMediePerformance() throws ExceptieNota{
+//		ArrayList<Integer> note=new ArrayList<>();
+//		int nrNote=(int) 1e6;
+//		Random random=new Random();
+//		for(int i =0;i<nrNote;i++) {
+//			note.add(random.nextInt(Student.MAX_NOTA)+1);
+//			
+//		}
+//		student.setNote(note);
+//		
+//		long tStart=System.currentTimeMillis();
+//		student.getMedie();
+//		long tFinal= System.currentTimeMillis();
+//		
+//		long durata=tFinal-tStart;
+//		if(durata <= 10) {
+//			assertTrue(true);
+//		}
+//		else {
+//			fail("calculul mediei dureaza mai mult de 10 milisecunde");
+//		}
+//	}
+	
+	@Test(timeout = 30)
+	@Category( TestImportant.class)
+	public void testGetMediePerformance2() throws ExceptieNota{
+		
+		student.setNote(noteRandom);
+		student.getMedie();
+	}
+	
+	@Test
+	//varsta nu mai este cea initiala -- verificare setar
+	public void testSetVarstaInverse() throws ExceptieVarsta {
+		int varstaNoua=varsta +1;
+		student.setVarsta(varstaNoua);
+		assertNotEquals("set nu modifica valoarea atributului",varsta, student.getVarsta());
+	}
+	
+	@Test
+	public void testGetNotaMinimaInverse() throws ExceptieNota {
+		ArrayList<Integer> note=new ArrayList<>();
+		Random random=new Random();
+		
+		note.add(random.nextInt(Student.MAX_NOTA)+1);
+		note.add(random.nextInt(Student.MAX_NOTA)+1);
+		note.add(random.nextInt(Student.MAX_NOTA)+1);
+		
+		student.setNote(note);
+
+		int notaMinima=student.getNotaMinima();
+		for(int i=0;i<student.getNrNote();i++) {
+			if(notaMinima> student.getNota(i)) {
+				fail("minimul nu este calculat corect");
+			}
+		}
+		assertTrue(true);
+	}
+	
+	@Test
+	public void testGetNotaMinimaCross() throws ExceptieNota  {
+		
+		ArrayList<Integer> note=new ArrayList<>();
+		Random random=new Random();
+		
+		note.add(random.nextInt(Student.MAX_NOTA)+1);
+		note.add(random.nextInt(Student.MAX_NOTA)+1);
+		note.add(random.nextInt(Student.MAX_NOTA)+1);
+		
+		student.setNote(note);
+		int notaMinima=Collections.min(note);
+		int notaMinCalculata=student.getNotaMinima();
+		assertEquals("nota minima nu este aceasta", notaMinima,notaMinCalculata);
+ 	}
 	
 }
